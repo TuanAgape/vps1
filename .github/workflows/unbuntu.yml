@@ -4,8 +4,9 @@ on:
 jobs:
   vps:
     runs-on: ubuntu-latest
+    timeout-minutes: 360
     steps:
-      - name: Start SSH session
+      - name: Start SSH session (tmate)
         uses: mxschmitt/action-tmate@v3
         with:
-          limit-access-to-actor: true
+          limit-access-to-actor: false   # <-- QUAN TRỌNG: tắt kiểm tra SSH key
