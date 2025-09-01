@@ -1,0 +1,17 @@
+name: 5x Ubuntu VPS
+on:
+  workflow_dispatch:
+
+jobs:
+  vps:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        idx: [1,2,3,4,5]   # tạo 5 VPS song song
+    steps:
+      - name: Start SSH session (tmate) - VPS #${{ matrix.idx }}
+        uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: false   # để khỏi cần SSH key
+    timeout-minutes: 360   # mỗi VPS chạy tối đa 6h
